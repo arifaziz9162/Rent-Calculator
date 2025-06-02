@@ -27,7 +27,6 @@ class ZeroPersonError(Exception):
 
 
 class RentCalculator:
-
     def __init__(self,rent,food,electricity_units,unit_charge,persons):
         if not all(isinstance(i, (int, float)) for i in [rent, food, electricity_units, unit_charge, persons]):
             raise TypeError("All inputs must be numbers (int or float).")
