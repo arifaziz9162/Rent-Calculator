@@ -1,19 +1,19 @@
 import logging
 
 # File handler and stream handler setup
-logger = logging.getLogger("CoffeeShopLogger")
+logger = logging.getLogger("Rent_Logger")
 logger.setLevel(logging.DEBUG)
 
 if logger.hasHandlers():
     logger.handlers.clear()
 
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.DEBUG)  
 stream_handler.setFormatter(formatter)
 
-file_handler = logging.FileHandler("coffee_shop.log")
+file_handler = logging.FileHandler("rent_calculator.log")
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
 
@@ -27,7 +27,7 @@ class ZeroPersonError(Exception):
 
 
 class RentCalculator:
-    
+
     def __init__(self,rent,food,electricity_units,unit_charge,persons):
         if not all(isinstance(i, (int, float)) for i in [rent, food, electricity_units, unit_charge, persons]):
             raise TypeError("All inputs must be numbers (int or float).")
@@ -45,7 +45,7 @@ class RentCalculator:
         electricity_bill = self.electricity_units * self.unit_charge
         total = self.food + self.rent + electricity_bill
         per_person = total / self.persons
-        logger.info(f"Total : ₹{total}, Each person will pay : ₹{per_person:.2f}")
+        logger.info(f"Total : {total}, Each person will pay : {per_person:.2f}")
         return per_person
     
 
