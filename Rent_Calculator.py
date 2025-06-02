@@ -37,7 +37,6 @@ class RentCalculator:
         self.unit_charge = unit_charge
         self.persons = persons
 
-
     def calculate_total(self):
         if self.persons <= 0:
             raise ZeroPersonError("Number of persons must be greater than zero.")
@@ -48,7 +47,6 @@ class RentCalculator:
         logger.info(f"Total : {total}, Each person will pay : {per_person:.2f}")
         return per_person
     
-
 def main():
     try:
 
